@@ -12,7 +12,7 @@ class AppTheme {
       appBarTheme: const AppBarTheme(
         elevation: 0,
         titleTextStyle: TextStyle(
-          fontSize: 16,
+          fontSize: 24,
           color: AppColors.lightText,
           fontWeight: FontWeight.w500,
         ),

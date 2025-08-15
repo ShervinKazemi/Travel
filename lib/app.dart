@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:travel/presentation/home/home_page.dart';
 import 'package:travel/presentation/theme/app_theme.dart';
 
 class App extends StatefulWidget {
@@ -11,23 +13,12 @@ class App extends StatefulWidget {
 class _AppState extends State<App> with WidgetsBindingObserver {
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Travel",
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      home: Scaffold(
-        body: Center(
-          child: Text(
-            "Hello World!"
-          ),
-        ),
-      ),
+      home: HomePage()
     );
   }
 }
