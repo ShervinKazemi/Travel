@@ -5,28 +5,25 @@ import 'package:provider/provider.dart';
 import 'package:travel/app.dart';
 import 'package:travel/model/provider/home_provider.dart';
 import 'package:travel/model/repo/travels_repository.dart';
-import 'package:travel/util/services/json_data_service.dart';
-
-void main() {
-  final WidgetsBinding widgetsBinding =
-      WidgetsFlutterBinding.ensureInitialized();
+Future<void> main() async {
+  final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle(
+    const SystemUiOverlayStyle(
       statusBarIconBrightness: Brightness.dark,
-      statusBarColor: Colors.transparent
-    )
+      statusBarColor: Colors.transparent,
+    ),
   );
-  FlutterNativeSplash.remove();
-
-  final TravelsRepository travelsRepository = TravelsRepository(JsonDataService());
 
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => HomeProvider(travelsRepository))
+        ChangeNotifierProvider(
+          create: (_) => HomeProvider(TravelsRepository()),
+          lazy: false,
+        ),
       ],
-      child: App(),
+      child: const App(),
     ),
   );
 }

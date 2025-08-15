@@ -3,6 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 import 'package:travel/model/provider/home_provider.dart';
 import 'package:travel/presentation/widget/button_item.dart';
+import 'package:travel/presentation/widget/headline_widget.dart';
 import 'package:travel/presentation/widget/home_app_bar.dart';
 import 'package:travel/presentation/widget/search_bar.dart';
 
@@ -14,7 +15,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String selectedButton = "Most Viewed"; // Default selected button
+  String selectedButton = "Most Viewed";
 
   void _onButtonClick(String text) {
     setState(() {
@@ -26,6 +27,15 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final homeProvider = Provider.of<HomeProvider>(context);
     final textTheme = Theme.of(context).textTheme;
+
+    if (homeProvider.isLoading) {
+      return const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
+
     return Scaffold(
       appBar: HomeAppBar(),
       body: Padding(
@@ -35,19 +45,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             SearchBarWidget(),
             Gap(24),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text("Popular places", style: textTheme.headlineMedium),
-                Text(
-                  "View all",
-                  style: textTheme.headlineSmall!.copyWith(
-                    color: Colors.grey.shade700,
-                  ),
-                ),
-              ],
-            ),
+            HeadlineWidget(textTheme: textTheme),
             Gap(16),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -85,3 +83,5 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+

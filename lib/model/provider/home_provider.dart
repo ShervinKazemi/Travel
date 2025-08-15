@@ -1,24 +1,29 @@
 import 'package:flutter/widgets.dart';
-import 'package:travel/model/data/travels.dart';
+import 'package:travel/model/data/travel.dart';
 import 'package:travel/model/repo/travels_repository.dart';
-
 class HomeProvider with ChangeNotifier {
   final TravelsRepository _travelsRepository;
-  HomeProvider(this._travelsRepository) {
+  HomeProvider(this._travelsRepository){
     fetchTravels();
   }
 
-  List<Travel> _travels = [];
-  List<Travel> get travels => _travels;
+  List<Travel> _travelsData = [];
+  List<Travel> get travelsData => _travelsData;
+  String error = "";
+  bool isLoading = false;
 
-  fetchTravels() async {
-    _travels = await _travelsRepository.fetchTravels();
+  fetchTravels() {
+    isLoading = true;
     notifyListeners();
+    try {
+      if (_travelsData.isEmpty) {
+        _travelsData = _travelsRepository.loadTravels();
+      }
+    } catch (e) {
+      error = e.toString();
+    } finally {
+      isLoading = false;
+      notifyListeners();
+    }
   }
-
-  Future<Travel> getTravelById(String id) async {
-    final travel = await _travelsRepository.getTravelsById(id);
-    return travel;
-  }
-
 }
