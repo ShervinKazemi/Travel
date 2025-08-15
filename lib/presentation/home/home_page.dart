@@ -9,8 +9,18 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final homeProvider = Provider.of<HomeProvider>(context);
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       appBar: HomeAppBar(),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            
+          ],
+        ),
+      ),
     );
   }
 }

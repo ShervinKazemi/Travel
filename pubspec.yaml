@@ -36,9 +36,9 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_launcher_icons: ^0.14.4
   flutter_native_splash: ^2.4.6
-  gap: ^3.0.1
   provider: ^6.1.2
   google_fonts: ^6.3.0
+  gap: ^3.0.1
 
 dev_dependencies:
   flutter_test:
