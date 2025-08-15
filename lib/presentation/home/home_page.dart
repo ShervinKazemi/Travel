@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:provider/provider.dart';
 import 'package:travel/model/provider/home_provider.dart';
 import 'package:travel/presentation/widget/home_app_bar.dart';
+import 'package:travel/presentation/widget/search_bar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -17,7 +19,22 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            
+            SearchBarWidget(),
+            Gap(24),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  "Popular places",
+                  style: textTheme.headlineMedium,
+                ),
+                Text(
+                  "View all",
+                  style: textTheme.headlineSmall!.copyWith(color: Colors.grey.shade700),
+                )
+              ],
+            )
           ],
         ),
       ),
