@@ -9,7 +9,6 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-<<<<<<< HEAD
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -22,12 +21,12 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             )
             ],
           ),
-          
-=======
-          Text("Hi, Shervin👋"),
->>>>>>> 85db458a1f29533ef807f6e6a7bb4738507e990d
-          CircleAvatar(
-            backgroundImage: AssetImage("assets/image/img_profile.jpg"),
+          SizedBox(
+            width: 50,
+            height: 50,
+            child: CircleAvatar(
+              backgroundImage: AssetImage("assets/image/img_profile.jpg"),
+            ),
           )
         ],
       ),
