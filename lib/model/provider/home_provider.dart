@@ -3,26 +3,34 @@ import 'package:travel/model/data/travel.dart';
 import 'package:travel/model/repo/travels_repository.dart';
 class HomeProvider with ChangeNotifier {
   final TravelsRepository _travelsRepository;
-  HomeProvider(this._travelsRepository){
+  
+  HomeProvider(this._travelsRepository) {
     fetchTravels();
   }
 
   List<Travel> _travelsData = [];
   List<Travel> get travelsData => _travelsData;
-  String error = "";
-  bool isLoading = false;
+  
+  bool _isLoading = false;
+  bool get isLoading => _isLoading;
+  
+  String? _error;
+  String? get error => _error;
 
-  fetchTravels() {
-    isLoading = true;
+  Future<void> fetchTravels() async {
+    if (_travelsData.isNotEmpty) return;
+    
+    _isLoading = true;
+    _error = null;
     notifyListeners();
+    
     try {
-      if (_travelsData.isEmpty) {
-        _travelsData = _travelsRepository.loadTravels();
-      }
+      _travelsData = _travelsRepository.loadTravels();
     } catch (e) {
-      error = e.toString();
+      _error = e.toString();
+      _travelsData = [];
     } finally {
-      isLoading = false;
+      _isLoading = false;
       notifyListeners();
     }
   }
