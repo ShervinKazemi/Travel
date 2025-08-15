@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 
 class HeadlineWidget extends StatelessWidget {
-  const HeadlineWidget({
-    super.key,
-    required this.textTheme,
-  });
+  const HeadlineWidget({super.key, required this.textTheme});
 
   final TextTheme textTheme;
 
@@ -15,10 +12,13 @@ class HeadlineWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text("Popular places", style: textTheme.headlineMedium),
-        Text(
-          "View all",
-          style: textTheme.headlineSmall!.copyWith(
-            color: Colors.grey.shade700,
+        TextButton(
+          onPressed: () {},
+          child: Text(
+            "View all",
+            style: textTheme.headlineSmall!.copyWith(
+              color: Colors.grey.shade700,
+            ),
           ),
         ),
       ],

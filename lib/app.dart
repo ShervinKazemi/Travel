@@ -26,7 +26,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
       title: "Travel",
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      home: const HomePage()
+      home: HomePage()
     );
   }
 }
