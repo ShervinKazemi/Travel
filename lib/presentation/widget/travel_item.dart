@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:travel/model/data/travel.dart';
+import 'package:travel/presentation/detail/travel_detail.dart';
 import 'package:travel/util/glassmorphism.dart';
 
 class TravelItem extends StatelessWidget {
@@ -12,13 +13,23 @@ class TravelItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => TravelDetail(),
+            settings: RouteSettings(arguments: travel)
+          )
+        );
+      },
       child: ClipRRect(
         borderRadius: BorderRadius.circular(32),
         child: Stack(
           fit: StackFit.expand,
           children: [
-            Image.asset(travel.image, fit: BoxFit.cover),
+            Hero(
+              tag: "travel${travel.name}",
+              child: Image.asset(travel.image, fit: BoxFit.cover)
+            ),
             Positioned(
               top: 16,
               right: 16,

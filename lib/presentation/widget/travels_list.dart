@@ -18,7 +18,9 @@ class TravelList extends StatelessWidget {
         itemCount: travels.length,
         itemBuilder: (context, index) => Padding(
           padding: index != 0 ? EdgeInsets.only(left: 16) : EdgeInsets.only(),
-          child: TravelItem(travel: travels[index]),
+          child: TravelItem(
+            travel: travels[index],
+          ),
         ),
       ),
     );
