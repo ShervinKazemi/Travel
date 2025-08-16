@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:travel/model/data/travel.dart';
+import 'package:travel/presentation/widget/option_widget.dart';
 import 'package:travel/util/glassmorphism.dart';
 
 class TravelDetail extends StatelessWidget {
@@ -144,6 +145,15 @@ class TravelDetail extends StatelessWidget {
                 style: textTheme.headlineLarge,
                 textDirection: TextDirection.ltr,
                 textAlign: TextAlign.start,
+              ),
+              Gap(16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  OptionWidget(text: data.time, icon: Icons.timelapse_rounded),
+                  OptionWidget(text: data.tempreture, icon: Icons.cloud),
+                  OptionWidget(text: data.rating, icon: Icons.star_rounded)
+                ],
               )
             ],
           ),
