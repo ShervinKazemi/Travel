@@ -4,9 +4,10 @@ A beautiful cross-platform travel app built with Flutter.
 
 ## Screenshots
 
-| Home Page | Detail Page |
-|-----------|------------|
-| ![Home](assets/screenshots/home.png) | ![Detail](assets/screenshots/detail.png) |
+## 📸 Screenshots  
+| Home Screen | Detail Screen |
+|------------|----------|
+| ![Home Screen](home_screen.jpg) | ![Detail Screen](detail_screen.jpg) |
 
 ## Features
 - View detailed information for each destination
